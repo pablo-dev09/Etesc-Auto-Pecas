@@ -332,36 +332,39 @@ details[open]{box-shadow:var(--sombra)}
   box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease,
-              opacity 0.3s ease, visibility 0.3s ease;
+              opacity 0.4s ease, visibility 0.4s ease, bottom 0.4s ease;
   z-index: 999;
   padding: 10px;
 
-  /* inicia escondido */
+  /* estado inicial escondido */
   opacity: 0;
   visibility: hidden;
+  bottom: 10px; /* começa mais baixo */
 }
 
-/* imagem seta azul */
+/* seta azul normal */
 .seta-img {
   width: 100%;
   height: auto;
   filter: invert(34%) sepia(95%) saturate(2470%) hue-rotate(191deg) brightness(97%) contrast(101%);
 }
 
-/* hover → inverter cores */
+/* hover → botão azul e seta branca */
 .back-to-top:hover {
   transform: scale(1.1);
-  background-color: #00bfff;
+  background-color: #00bfff; /* azul */
 }
 .back-to-top:hover .seta-img {
-  filter: brightness(0) invert(1); /* seta fica branca */
+  filter: brightness(0) invert(1); /* seta branca */
 }
 
-/* mostrar quando ativado no JS */
+/* estado visível (JS adiciona .mostrar) */
 .back-to-top.mostrar {
   opacity: 1;
   visibility: visible;
+  bottom: 30px; /* volta para posição original */
 }
+
 
 /* Footer */
 footer{color:#eef7ff;background:linear-gradient(180deg,var(--azul),#001a33);padding:36px 18px;margin-top:56px}
@@ -470,6 +473,9 @@ footer {
     bottom: 15px;
     right: 15px;
   }
+  .back-to-top.mostrar {
+    bottom: 15px;
+  }
 }
   
 /* Responsividade - apenas ajustes visuais */
@@ -498,7 +504,11 @@ footer {
     bottom: 20px;
     right: 20px;
   }
+  .back-to-top.mostrar {
+    bottom: 20px;
+  }
 }
+
 
 
 
