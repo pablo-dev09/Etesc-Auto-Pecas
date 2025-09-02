@@ -41,7 +41,7 @@ header{
 }
 .logo{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--azul)}
 .logo img{height:44px}
-.menu{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px}
+.menu{display:flex;align-items:center;gap:10px}
 .menu a{padding:10px 12px;font-weight:700;color:var(--azul);position:relative;border-radius:10px}
 .menu a::after{
   content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;
@@ -344,6 +344,14 @@ footer {
   padding: 20px;
 }
 
+.menu-toggle{
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--azul);
+  cursor: pointer;
+
 /* ====== RESPONSIVIDADE ====== */
 
 /* Smartphones pequenos */
@@ -356,32 +364,7 @@ footer {
     max-width: 200px;
     margin: 20px auto 0;
   }
-  header {
-    height: auto;
-    padding: 8px 12px;
-  }
-
-  .nav {
-    flex-direction: row;       /* garante horizontal */
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .menu {
-    display: flex;
-    flex-direction: row;       /* horizontal */
-    gap: 6px;                  /* menos espaço entre itens */
-    flex-wrap: wrap;           /* se faltar espaço, quebra em outra linha */
-  }
-
-  .menu a {
-    font-size: 0.85rem;
-    padding: 4px 6px;
-    white-space: nowrap;       /* impede quebra de texto */
-  }
-}
-
-
+  
 /* Tablets */
 @media (max-width: 768px) {
   .sobre {
@@ -389,6 +372,30 @@ footer {
   }
   .hero h1 {
     font-size: 2.4rem;
+  }
+  .menu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 15px;
+    width: 200px;
+    z-index: 1001;
+  }
+  .menu a{
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+  }
+  .menu-toggle{
+    display: block;
+  }
+  .menu.open{
+    display: flex;
   }
 }
 
@@ -399,4 +406,5 @@ footer {
   }
 
 }
+
 
