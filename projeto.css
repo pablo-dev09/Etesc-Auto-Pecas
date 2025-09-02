@@ -36,19 +36,74 @@ header{
   backdrop-filter:blur(8px);
   border-bottom:1px solid rgba(0,0,0,.06);
 }
-.nav{
-  max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 18px;flex-direction:row;position:relative;
+/* Container do nav */
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* separa logo e menu */
+  gap: 16px;
+  padding: 10px 18px;
+  flex-wrap: wrap; /* permite quebrar linha no mobile */
 }
-.logo{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--azul)}
-.logo img{height:44px}
-.menu{display:flex;align-items:center;gap:10px}
-.menu a{padding:10px 12px;font-weight:700;color:var(--azul);position:relative;border-radius:10px}
-.menu a::after{
-  content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;
-  background:linear-gradient(90deg,var(--azul),var(--azul-claro));
-  transform:scaleX(0);transform-origin:left;transition:.25s;
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  color: var(--azul);
 }
-.menu a:hover::after{transform:scaleX(1)}
+
+.logo img {
+  height: 40px;
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap; /* quebra linha se não couber */
+}
+
+.menu a {
+  padding: 10px 12px;
+  font-weight: 700;
+  color: var(--azul);
+  position: relative;
+  border-radius: 10px;
+  white-space: nowrap; /* não quebra palavras */
+  text-decoration: none;
+}
+
+/* Efeito hover */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 6px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--azul), var(--azul-claro));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: .25s;
+}
+
+.menu a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Botão catálogo */
+.menu .btn {
+  background: var(--azul);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
 
 
 /* Estilo geral para botões */
@@ -344,14 +399,6 @@ footer {
   padding: 20px;
 }
 
-.menu-toggle{
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: var(--azul);
-  cursor: pointer;
-
 /* ====== RESPONSIVIDADE ====== */
 
 /* Smartphones pequenos */
@@ -365,50 +412,24 @@ footer {
     margin: 20px auto 0;
   }
   
-/* Tablets */
+/* Responsividade - apenas ajustes visuais */
 @media (max-width: 768px) {
-  .sobre {
-    grid-template-columns: 1fr;
-  }
-  .hero h1 {
-    font-size: 2.4rem;
-  }
-  .menu {
-    display: none;                /* esconde no mobile */
-    flex-direction: column;       /* vira coluna */
-    position: absolute;
-    top: 60px;                    /* abaixo do header */
-    right: 18px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 10px;
-    z-index: 1000;
+  .nav {
+    flex-direction: column; /* logo em cima, menu embaixo */
+    align-items: center;
+    gap: 10px;
   }
 
-  .menu.open {
-    display: flex;                /* aparece quando clica no hambúrguer */
+  .menu {
+    justify-content: center;
   }
 
   .menu a {
-    width: 100%;
-    text-align: left;
-    padding: 12px;
+    font-size: 14px;
+    padding: 8px 10px;
   }
 
-  /* botão hambúrguer visível só no mobile */
-  .menu-toggle {
-    display: block;
-    font-size: 28px;
-    cursor: pointer;
-    margin-left: auto;
-    color: var(--azul);
-    background: none;
-    border: none;
+  .logo img {
+    height: 32px;
   }
-}
-
-/* desktop: botão não aparece */
-.menu-toggle {
-  display: none;
 }
