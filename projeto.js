@@ -12,11 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Interações sobre
   prepararInteracoesSobre();
 
-  // -----------------------
-  // Menu hambúrguer mobile
-  // -----------------------
-   });
-  }
 });
 
 // Animação 3D nos cards
@@ -97,6 +92,7 @@ function prepararInteracoesSobre() {
   }
 
 }
+
 
 
 
