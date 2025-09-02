@@ -7,16 +7,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // CTA -> rolar até produtos
   const cta = document.querySelector(".cta");
-  if (cta) cta.addEventListener("click", () => document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth" }));
+  if (cta) {
+    cta.addEventListener("click", () =>
+      document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth" })
+    );
+  }
 
-  // Interações sobre
+  // Interações seção "Sobre"
   prepararInteracoesSobre();
 
+  // -----------------------
+  // Menu hambúrguer mobile
+  // -----------------------
+  const nav = document.querySelector(".nav");
+  const menu = document.querySelector(".menu");
+
+  // cria botão hamburguer dinamicamente
+  const btnHamb = document.createElement("button");
+  btnHamb.classList.add("hamburger");
+  btnHamb.innerHTML = '<i class="ti ti-menu-2"></i>';
+  nav.insertBefore(btnHamb, menu);
+
+  btnHamb.addEventListener("click", () => {
+    menu.classList.toggle("ativo");
+    btnHamb.classList.toggle("ativo");
+  });
 });
 
+// ================================
 // Animação 3D nos cards
-document.querySelectorAll(".case-card").forEach(card => {
-  card.addEventListener("mousemove", e => {
+// ================================
+document.querySelectorAll(".case-card").forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -32,7 +54,6 @@ document.querySelectorAll(".case-card").forEach(card => {
   });
 });
 
-
 // ================================
 // Interações seção sobre
 // ================================
@@ -45,7 +66,7 @@ function prepararInteracoesSobre() {
     btnHistoria.addEventListener("click", () => {
       mostrarSobreExtra(`
         <strong>Nossa história</strong>
-        <p>Fundada em 2000, a Etesc cresceu a partir de um pequeno núcleo técnico até se tornar uma fábrica com linhas automatizadas e cultura de inovação. Crescemos investindo em P&D, parcerias acadêmicas e práticas sustentáveis.</p>
+        <p>Fundada em 2000, a Etesc cresceu de um núcleo técnico até se tornar uma fábrica com linhas automatizadas e cultura de inovação.</p>
       `);
     });
   }
@@ -65,18 +86,16 @@ function prepararInteracoesSobre() {
 
   // fechar extra ao clicar fora
   document.addEventListener("click", (e) => {
-    const extra = document.getElementById("sobre-extra");
-    const btns = document.querySelectorAll(".sobre-actions, .s-card");
-    if (!extra) return;
-    const within = e.target.closest(".sobre") || e.target.closest(".s-card");
-    if (!within && extra.style.display === "block") {
-      extra.style.display = "none";
-      extra.innerHTML = "";
+    if (!sobreExtra) return;
+    const dentro = e.target.closest(".sobre") || e.target.closest(".s-card");
+    if (!dentro && sobreExtra.style.display === "block") {
+      sobreExtra.style.display = "none";
+      sobreExtra.innerHTML = "";
     }
   });
 
   // cards também mostram info
-  document.querySelectorAll(".s-card").forEach(card => {
+  document.querySelectorAll(".s-card").forEach((card) => {
     card.addEventListener("click", () => {
       const titulo = card.querySelector("h3")?.textContent || "Info";
       const texto = card.querySelector("p")?.innerHTML || "";
@@ -88,12 +107,6 @@ function prepararInteracoesSobre() {
     if (!sobreExtra) return;
     sobreExtra.innerHTML = html;
     sobreExtra.style.display = "block";
-    sobreExtra.scrollIntoView({behavior: "smooth", block: "nearest"});
+    sobreExtra.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
-
 }
-
-
-
-
-
