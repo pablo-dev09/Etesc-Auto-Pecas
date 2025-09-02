@@ -15,13 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -----------------------
   // Menu hambúrguer mobile
   // -----------------------
-  const toggle = document.querySelector(".menu-toggle");
-  const menu = document.querySelector(".menu");
-
-  if (toggle && menu) {
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("open");
-    });
+  
   }
 });
 
@@ -103,5 +97,6 @@ function prepararInteracoesSobre() {
   }
 
 }
+
 
 
