@@ -17,21 +17,26 @@ document.addEventListener("DOMContentLoaded", () => {
   prepararInteracoesSobre();
 
   // -----------------------
-  // Menu hambúrguer mobile
+  // Botão voltar ao topo
   // -----------------------
-  const nav = document.querySelector(".nav");
-  const menu = document.querySelector(".menu");
+  const btnTopo = document.getElementById("btn-topo");
+  if (btnTopo) {
+    const toggleBtnTopo = () => {
+      if (window.scrollY > 200) {
+        btnTopo.classList.add("mostrar");
+      } else {
+        btnTopo.classList.remove("mostrar");
+      }
+    };
 
-  // cria botão hamburguer dinamicamente
-  const btnHamb = document.createElement("button");
-  btnHamb.classList.add("hamburger");
-  btnHamb.innerHTML = '<i class="ti ti-menu-2"></i>';
-  nav.insertBefore(btnHamb, menu);
+    window.addEventListener("scroll", toggleBtnTopo);
+    btnTopo.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
-  btnHamb.addEventListener("click", () => {
-    menu.classList.toggle("ativo");
-    btnHamb.classList.toggle("ativo");
-  });
+    // Inicializa a visibilidade ao carregar a página
+    toggleBtnTopo();
+  }
 });
 
 // ================================
@@ -110,18 +115,3 @@ function prepararInteracoesSobre() {
     sobreExtra.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 }
-const btnTopo = document.getElementById("btn-topo");
-
-// Mostrar/esconder botão conforme rolagem
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 200) {
-    btnTopo.classList.add("mostrar");
-  } else {
-    btnTopo.classList.remove("mostrar");
-  }
-});
-
-// Clique → rolar até o topo
-btnTopo.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
