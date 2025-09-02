@@ -31,7 +31,12 @@ document.querySelectorAll(".case-card").forEach(card => {
   });
 });
 
+const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
 
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("open");
+});
 
 // ================================
 // Interações seção sobre
@@ -90,4 +95,5 @@ function prepararInteracoesSobre() {
     sobreExtra.style.display = "block";
     sobreExtra.scrollIntoView({behavior: "smooth", block: "nearest"});
   }
+
 }
