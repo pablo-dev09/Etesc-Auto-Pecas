@@ -111,34 +111,7 @@ header {
   padding: 10px 16px;
 }
 
-/* Botão voltar ao topo */
-#btn-topo {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: none;
-  background: #fff;
-  color: var(--azul);
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
 
-/* Hover/Pressionar → inverter cores */
-#btn-topo:hover,
-#btn-topo:active {
-  background: var(--azul);
-  color: #fff;
-  transform: scale(1.1);
-}
 
 /* Estilo geral para botões */
 button, .btn {
@@ -344,6 +317,52 @@ details+details{margin-top:10px}
 summary{cursor:pointer;font-weight:800;color:var(--azul)}
 details[open]{box-shadow:var(--sombra)}
 
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #fff; /* fundo branco */
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+              opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 999;
+  padding: 10px;
+
+  /* inicia escondido */
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* imagem seta azul */
+.seta-img {
+  width: 100%;
+  height: auto;
+  filter: invert(34%) sepia(95%) saturate(2470%) hue-rotate(191deg) brightness(97%) contrast(101%);
+}
+
+/* hover → inverter cores */
+.back-to-top:hover {
+  transform: scale(1.1);
+  background-color: #00bfff;
+}
+.back-to-top:hover .seta-img {
+  filter: brightness(0) invert(1); /* seta fica branca */
+}
+
+/* mostrar quando ativado no JS */
+.back-to-top.mostrar {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Footer */
 footer{color:#eef7ff;background:linear-gradient(180deg,var(--azul),#001a33);padding:36px 18px;margin-top:56px}
 footer .wrap{max-width:1200px;margin:0 auto;display:flex;gap:24px;flex-wrap:wrap;justify-content:space-between}
@@ -445,12 +464,11 @@ footer {
     max-width: 200px;
     margin: 20px auto 0;
   }
-  #btn-topo {
-    width: 44px;
-    height: 44px;
-    font-size: 18px;
-    bottom: 14px;
-    right: 14px;
+  .back-to-top {
+    width: 40px;
+    height: 40px;
+    bottom: 15px;
+    right: 15px;
   }
 }
   
@@ -474,13 +492,13 @@ footer {
   .logo img {
     height: 32px;
   }
-  #btn-topo {
-    width: 48px;
-    height: 48px;
-    font-size: 20px;
-    bottom: 18px;
-    right: 18px;
+  .back-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 20px;
+    right: 20px;
   }
 }
+
 
 
