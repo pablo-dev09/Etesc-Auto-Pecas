@@ -111,6 +111,34 @@ header {
   padding: 10px 16px;
 }
 
+/* Botão voltar ao topo */
+#btn-topo {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  color: var(--azul);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+/* Hover/Pressionar → inverter cores */
+#btn-topo:hover,
+#btn-topo:active {
+  background: var(--azul);
+  color: #fff;
+  transform: scale(1.1);
+}
 
 /* Estilo geral para botões */
 button, .btn {
@@ -417,6 +445,14 @@ footer {
     max-width: 200px;
     margin: 20px auto 0;
   }
+  #btn-topo {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    bottom: 14px;
+    right: 14px;
+  }
+}
   
 /* Responsividade - apenas ajustes visuais */
 @media (max-width: 768px) {
@@ -438,5 +474,13 @@ footer {
   .logo img {
     height: 32px;
   }
+  #btn-topo {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    bottom: 18px;
+    right: 18px;
+  }
 }
+
 
