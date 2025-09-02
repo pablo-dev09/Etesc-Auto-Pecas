@@ -118,15 +118,20 @@ if (btnTopo) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // Exibir o botão só depois de rolar
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      btnTopo.style.display = "flex";
-    } else {
-      btnTopo.style.display = "none";
-    }
+  const btnTopo = document.getElementById("btn-topo");
+
+if (btnTopo) {
+  // Ação de clicar → voltar ao topo
+  btnTopo.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  // Inicia escondido
-  btnTopo.style.display = "none";
+  // Mostrar/esconder o botão conforme rolagem
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btnTopo.classList.add("mostrar");
+    } else {
+      btnTopo.classList.remove("mostrar");
+    }
+  });
 }
