@@ -12,13 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Interações sobre
   prepararInteracoesSobre();
 
+  // -----------------------
+  // Menu hambúrguer mobile
+  // -----------------------
   const toggle = document.querySelector(".menu-toggle");
-const menu = document.querySelector(".menu");
+  const menu = document.querySelector(".menu");
 
-toggle.addEventListener("click",
-() => {
-  menu.classList.toggle("open");
-   });
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("open");
+    });
   }
 });
 
@@ -100,4 +103,5 @@ function prepararInteracoesSobre() {
   }
 
 }
+
 
