@@ -275,7 +275,7 @@ body {
 }
 
 /* ====== LAYOUT GERAL ====== */
-header, nav, section, footer {
+header, nav,section, footer {
   padding: 20px;
 }
 
@@ -356,9 +356,26 @@ footer {
     max-width: 200px;
     margin: 20px auto 0;
   }
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
+  header {
+    padding: 8px 10px;
+    height: auto; /* só o necessário */
+  }
+
+  .nav {
+    flex-direction: row;   /* mantém logo + menu lado a lado */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu {
+    flex-direction: row;   /* continua horizontal */
+    flex-wrap: wrap;       /* permite quebrar se faltar espaço */
+    gap: 6px;
+  }
+
+  .menu a {
+    font-size: 0.9rem;     /* reduz fonte pra caber */
+    padding: 6px;
   }
 }
 
@@ -377,4 +394,5 @@ footer {
   section {
     padding: 40px 15px;
   }
+
 }
