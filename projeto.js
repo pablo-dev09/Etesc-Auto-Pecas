@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // -----------------------
   // Botão voltar ao topo
   // -----------------------
+
+  
   const btnTopo = document.getElementById("btn-topo");
   if (btnTopo) {
     const toggleBtnTopo = () => {
@@ -28,7 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
         btnTopo.classList.remove("mostrar");
       }
     };
-
+  const toggleBtnTopo = () => {
+  btnTopo.classList.add("mostrar"); // força aparecer sempre
+};
+toggleBtnTopo();
+    
     window.addEventListener("scroll", toggleBtnTopo);
     btnTopo.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -115,3 +121,4 @@ function prepararInteracoesSobre() {
     sobreExtra.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 }
+
