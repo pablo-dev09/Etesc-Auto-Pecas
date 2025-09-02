@@ -11,6 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Interações sobre
   prepararInteracoesSobre();
+
+  const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
+
+toggle.addEventListener("click",
+() => {
+  menu.classList.toggle("open");
+   });
+  }
 });
 
 // Animação 3D nos cards
@@ -31,12 +40,6 @@ document.querySelectorAll(".case-card").forEach(card => {
   });
 });
 
-const toggle = document.querySelector(".menu-toggle");
-const menu = document.querySelector(".menu");
-
-toggle.addEventListener("click", () => {
-  menu.classList.toggle("open");
-});
 
 // ================================
 // Interações seção sobre
@@ -97,3 +100,4 @@ function prepararInteracoesSobre() {
   }
 
 }
+
