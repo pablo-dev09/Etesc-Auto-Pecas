@@ -110,28 +110,18 @@ function prepararInteracoesSobre() {
     sobreExtra.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 }
-// Botão voltar ao topo
 const btnTopo = document.getElementById("btn-topo");
 
-if (btnTopo) {
-  btnTopo.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+// Mostrar/esconder botão conforme rolagem
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    btnTopo.classList.add("mostrar");
+  } else {
+    btnTopo.classList.remove("mostrar");
+  }
+});
 
-  const btnTopo = document.getElementById("btn-topo");
-
-if (btnTopo) {
-  // Ação de clicar → voltar ao topo
-  btnTopo.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-
-  // Mostrar/esconder o botão conforme rolagem
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      btnTopo.classList.add("mostrar");
-    } else {
-      btnTopo.classList.remove("mostrar");
-    }
-  });
-}
+// Clique → rolar até o topo
+btnTopo.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
