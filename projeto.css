@@ -373,39 +373,42 @@ footer {
   .hero h1 {
     font-size: 2.4rem;
   }
-  .menu{
-    display: none;
-    flex-direction: column;
+  .menu {
+    display: none;                /* esconde no mobile */
+    flex-direction: column;       /* vira coluna */
     position: absolute;
-    top: 70px;
-    right: 10px;
+    top: 60px;                    /* abaixo do header */
+    right: 18px;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    padding: 15px;
-    width: 200px;
-    z-index: 1001;
-  }
-  .menu a{
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     padding: 10px;
+    z-index: 1000;
+  }
+
+  .menu.open {
+    display: flex;                /* aparece quando clica no hambúrguer */
+  }
+
+  .menu a {
     width: 100%;
     text-align: left;
+    padding: 12px;
   }
-  .menu-toggle{
+
+  /* botão hambúrguer visível só no mobile */
+  .menu-toggle {
     display: block;
-  }
-  .menu.open{
-    display: flex;
+    font-size: 28px;
+    cursor: pointer;
+    margin-left: auto;
+    color: var(--azul);
+    background: none;
+    border: none;
   }
 }
 
-/* Notebooks médios */
-@media (max-width: 1200px) {
-  section {
-    padding: 40px 15px;
-  }
-
+/* desktop: botão não aparece */
+.menu-toggle {
+  display: none;
 }
-
-
-
