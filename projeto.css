@@ -37,7 +37,7 @@ header{
   border-bottom:1px solid rgba(0,0,0,.06);
 }
 .nav{
-  max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 18px;
+  max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 18px;flex-direction:row;
 }
 .logo{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--azul)}
 .logo img{height:44px}
@@ -357,27 +357,30 @@ footer {
     margin: 20px auto 0;
   }
   header {
-    padding: 8px 10px;
-    height: auto; /* só o necessário */
+    height: auto;
+    padding: 8px 12px;
   }
 
   .nav {
-    flex-direction: row;   /* mantém logo + menu lado a lado */
+    flex-direction: row;       /* garante horizontal */
     justify-content: space-between;
     align-items: center;
   }
 
   .menu {
-    flex-direction: row;   /* continua horizontal */
-    flex-wrap: wrap;       /* permite quebrar se faltar espaço */
-    gap: 6px;
+    display: flex;
+    flex-direction: row;       /* horizontal */
+    gap: 6px;                  /* menos espaço entre itens */
+    flex-wrap: wrap;           /* se faltar espaço, quebra em outra linha */
   }
 
   .menu a {
-    font-size: 0.9rem;     /* reduz fonte pra caber */
-    padding: 6px;
+    font-size: 0.85rem;
+    padding: 4px 6px;
+    white-space: nowrap;       /* impede quebra de texto */
   }
 }
+
 
 /* Tablets */
 @media (max-width: 768px) {
@@ -396,3 +399,4 @@ footer {
   }
 
 }
+
