@@ -110,3 +110,23 @@ function prepararInteracoesSobre() {
     sobreExtra.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 }
+// Botão voltar ao topo
+const btnTopo = document.getElementById("btn-topo");
+
+if (btnTopo) {
+  btnTopo.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Exibir o botão só depois de rolar
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btnTopo.style.display = "flex";
+    } else {
+      btnTopo.style.display = "none";
+    }
+  });
+
+  // Inicia escondido
+  btnTopo.style.display = "none";
+}
