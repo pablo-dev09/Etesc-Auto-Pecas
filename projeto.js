@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -----------------------
   // Menu hambúrguer mobile
   // -----------------------
-  
+   });
   }
 });
 
@@ -97,6 +97,7 @@ function prepararInteracoesSobre() {
   }
 
 }
+
 
 
 
