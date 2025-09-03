@@ -392,6 +392,10 @@ footer h3{margin:0 0 8px}
   .back-to-top.mostrar {
     bottom: 15px;
   }
+  .metrics {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 16px; /* espaço entre os cards */
+  }
 }
   
 /* Responsividade - apenas ajustes visuais */
@@ -423,7 +427,12 @@ footer h3{margin:0 0 8px}
   .back-to-top.mostrar {
     bottom: 20px;
   }
+  .metrics {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+    gap: 16px; /* espaço entre os cards */
+  }
 }
+
 
 
 
