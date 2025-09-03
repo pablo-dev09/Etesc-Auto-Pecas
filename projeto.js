@@ -21,29 +21,40 @@ document.addEventListener("DOMContentLoaded", () => {
   // -----------------------
 
   
-  const btnTopo = document.getElementById("btn-topo");
-  if (btnTopo) {
-    const toggleBtnTopo = () => {
-      if (window.scrollY > 200) {
-        btnTopo.classList.add("mostrar");
-      } else {
-        btnTopo.classList.remove("mostrar");
-      }
-    };
-  const toggleBtnTopo = () => {
-  btnTopo.classList.add("mostrar"); // força aparecer sempre
-};
-toggleBtnTopo();
-    
-    window.addEventListener("scroll", toggleBtnTopo);
-    btnTopo.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    // Inicializa a visibilidade ao carregar a página
-    toggleBtnTopo();
-  }
+  // Rolagem suave nos links do menu
+const links = document.querySelectorAll(".menu a[href^='#']");
+links.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const alvo = document.querySelector(link.getAttribute("href"));
+    if (alvo) {
+      alvo.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 });
+
+// Botão voltar ao topo
+const btnTopo = document.getElementById("btn-topo");
+if (btnTopo) {
+  const toggleBtnTopo = () => {
+    if (window.scrollY > 200) {
+      btnTopo.classList.add("mostrar");
+    } else {
+      btnTopo.classList.remove("mostrar");
+    }
+  };
+
+  window.addEventListener("scroll", toggleBtnTopo);
+
+  btnTopo.addEventListener("click", () => {
+    // compatibilidade com navegadores antigos
+    if ("scrollBehavior" in document.documentElement.style) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  });
+}
 
 // ================================
 // Animação 3D nos cards
@@ -121,4 +132,5 @@ function prepararInteracoesSobre() {
     sobreExtra.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 }
+
 
