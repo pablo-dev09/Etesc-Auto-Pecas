@@ -90,6 +90,13 @@ function getIAResponseSync(msg) {
   const m = msg.toLowerCase();
   if (m.includes("horário") || m.includes("funcionamento") || m.includes("horario"))
     return "Nosso horário de atendimento é de segunda a sexta, das 08:00 às 18:00.";
+  if (m.includes("grupo") || m.includes("integrantes") || m.includes("participantes"))
+    return "Pedro Henrique Soares - piririquepedro@gmail.com (Líder Do Projeto)
+      Pablo Sousa Ribeiro - pablo.info.09@gmail.com (Desenvolvedor Web)
+      Marlon Eduardo Da Silva Amaral - marlon.edu2015@gmail.com (Suporte Web)
+      Kelly Araujo - kellyfaetec.com@gmail.com (Administradora Principal)
+      Davi Lucas - 21993891165 (Apresentador Mecânico)
+      Joao Pedrio Cavalcante - 21983660758 (Apresentador Mecânico)";
   if (m.includes("endereço") || m.includes("localização"))
     return "Estamos localizados na Escola Técnica Estadual De Santa Cruz, FAETEC — Rio De Janeiro/RJ.";
   if (m.includes("telefone") || m.includes("contato") || m.includes("whatsapp"))
@@ -221,4 +228,5 @@ function init() {
   }
   renderMessages();
   userInput.focus();
+
 }
