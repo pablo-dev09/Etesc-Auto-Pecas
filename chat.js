@@ -31,7 +31,11 @@ function renderMessages() {
 
     const bubble = document.createElement("div");
     bubble.className = "chat-message " + (m.role === "user" ? "user" : "bot");
-    bubble.innerHTML = `<div class="content">${escapeHtml(m.text).replace(/\n/g, '<br>')}</div>
+
+    // ✅ CORREÇÃO AQUI
+    const safeHtml = escapeHtml(m.text).replace(/\n/g, "<br>");
+
+    bubble.innerHTML = `<div class="content">${safeHtml}</div>
                         <div class="meta">${m.time}</div>`;
 
     if (window.innerWidth <= 720) row.appendChild(bubble);
@@ -42,6 +46,7 @@ function renderMessages() {
   }
   chatBox.scrollTop = chatBox.scrollHeight;
 }
+
 
 // INDICADOR DE DIGITAÇÃO
 function showTyping() {
@@ -230,4 +235,5 @@ function init() {
   userInput.focus();
 
 }
+
 
