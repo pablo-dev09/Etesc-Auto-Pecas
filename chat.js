@@ -15,8 +15,12 @@ let ttsEnabled = false;
 function nowTime() {
   return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
+
 function escapeHtml(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 // RENDERIZAÇÃO DAS MENSAGENS
@@ -25,44 +29,56 @@ function renderMessages() {
   for (const m of messages) {
     const row = document.createElement("div");
     row.className = "msg-row" + (m.role === "user" ? " msg-row--right" : "");
+
     const avatar = document.createElement("div");
     avatar.className = "avatar " + (m.role === "user" ? "user" : "bot");
-    avatar.textContent = (m.role === "user" ? "EU" : "IA");
+    avatar.textContent = m.role === "user" ? "EU" : "IA";
 
     const bubble = document.createElement("div");
     bubble.className = "chat-message " + (m.role === "user" ? "user" : "bot");
 
     // ✅ CORREÇÃO AQUI
     const safeHtml = escapeHtml(m.text).replace(/\n/g, "<br>");
-
     bubble.innerHTML = `<div class="content">${safeHtml}</div>
                         <div class="meta">${m.time}</div>`;
 
-    if (window.innerWidth <= 720) row.appendChild(bubble);
-    else if (m.role === "user") { row.appendChild(bubble); row.appendChild(avatar); }
-    else { row.appendChild(avatar); row.appendChild(bubble); }
+    if (window.innerWidth <= 720) {
+      row.appendChild(bubble);
+    } else if (m.role === "user") {
+      row.appendChild(bubble);
+      row.appendChild(avatar);
+    } else {
+      row.appendChild(avatar);
+      row.appendChild(bubble);
+    }
 
     chatBox.appendChild(row);
   }
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-
 // INDICADOR DE DIGITAÇÃO
 function showTyping() {
   const row = document.createElement("div");
   row.className = "msg-row";
   const avatar = document.createElement("div");
-  avatar.className = "avatar bot"; avatar.textContent = "IA";
+  avatar.className = "avatar bot";
+  avatar.textContent = "IA";
+
   const bubble = document.createElement("div");
   bubble.className = "chat-message bot";
   bubble.innerHTML = `<div class="typing"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>`;
-  row.appendChild(avatar); row.appendChild(bubble);
+
+  row.appendChild(avatar);
+  row.appendChild(bubble);
   chatBox.appendChild(row);
   chatBox.scrollTop = chatBox.scrollHeight;
   return row;
 }
-function removeTyping(row) { if (row && row.parentNode) row.remove(); }
+
+function removeTyping(row) {
+  if (row && row.parentNode) row.remove();
+}
 
 // EFEITO DE DIGITAÇÃO
 function typeWrite(element, text, speed = 12) {
@@ -92,16 +108,16 @@ function speak(text) {
 
 // RESPOSTAS PRÉ-MOLDADAS
 function getIAResponseSync(msg) {
-  const m = msg.toLowerCase();
+  const m = msg.toLowerCase().trim();
   if (m.includes("horário") || m.includes("funcionamento") || m.includes("horario"))
     return "Nosso horário de atendimento é de segunda a sexta, das 08:00 às 18:00.";
   if (m.includes("grupo") || m.includes("integrantes") || m.includes("participantes"))
-  return "Pedro Henrique Soares - piririquepedro@gmail.com (Líder Do Projeto)\n" +
-    "Pablo Sousa Ribeiro - pablo.info.09@gmail.com (Desenvolvedor Web)\n" +
-    "Marlon Eduardo Da Silva Amaral - marlon.edu2015@gmail.com (Suporte Web)\n" +
-    "Kelly Araujo - kellyfaetec.com@gmail.com (Administradora Principal)\n" +
-    "Davi Lucas - 21993891165 (Apresentador Mecânico)\n" +
-    "Joao Pedro Cavalcante - 21983660758 (Apresentador Mecânico)";
+    return "Pedro Henrique Soares - piririquepedro@gmail.com (Líder Do Projeto)\n" +
+      "Pablo Sousa Ribeiro - pablo.info.09@gmail.com (Desenvolvedor Web)\n" +
+      "Marlon Eduardo Da Silva Amaral - marlon.edu2015@gmail.com (Suporte Web)\n" +
+      "Kelly Araujo - kellyfaetec.com@gmail.com (Administradora Principal)\n" +
+      "Davi Lucas - 21993891165 (Apresentador Mecânico)\n" +
+      "Joao Pedro Cavalcante - 21983660758 (Apresentador Mecânico)";
   if (m.includes("endereço") || m.includes("localização"))
     return "Estamos localizados na Escola Técnica Estadual De Santa Cruz, FAETEC — Rio De Janeiro/RJ.";
   if (m.includes("telefone") || m.includes("contato") || m.includes("whatsapp"))
@@ -171,24 +187,30 @@ function loadHistory() {
   try {
     const raw = localStorage.getItem("chat_local_v1");
     if (raw) messages = JSON.parse(raw);
-  } catch (e) { }
+  } catch (e) {}
 }
+
 function saveHistory() {
-  try { localStorage.setItem("chat_local_v1", JSON.stringify(messages)); } catch (e) { }
+  try {
+    localStorage.setItem("chat_local_v1", JSON.stringify(messages));
+  } catch (e) {}
 }
 
 // EVENTOS
 sendBtn.addEventListener("click", sendMessage);
+
 userInput.addEventListener("input", () => {
   sendBtn.disabled = userInput.value.trim() === "";
   adjustTextareaHeight();
 });
+
 userInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey) {
     e.preventDefault();
     if (userInput.value.trim()) sendMessage();
   }
 });
+
 btnClear.addEventListener("click", () => {
   if (confirm("Deseja limpar todo o histórico local?")) {
     messages = [];
@@ -196,44 +218,12 @@ btnClear.addEventListener("click", () => {
     renderMessages();
   }
 });
+
 btnTts.addEventListener("click", () => {
   ttsEnabled = !ttsEnabled;
   ttsStateSpan.textContent = ttsEnabled ? "ON" : "OFF";
   btnTts.style.background = ttsEnabled ? "linear-gradient(180deg,var(--verde), #009b50)" : "";
-  if (!ttsEnabled) window.speechSynthesis && window.speechSynthesis.cancel();
-});
-btnDark.addEventListener("click", () => {
-  // Cria uma camada de fade para o efeito
-  const overlay = document.createElement("div");
-  overlay.className = "theme-fade";
-  document.body.appendChild(overlay);
-
-  // Espera o fade começar antes de trocar o tema
-  setTimeout(() => {
-    document.body.classList.toggle("dark");
-    btnDark.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-  }, 150);
-
-  // Remove o overlay após a animação
-  setTimeout(() => {
-    overlay.classList.add("fade-out");
-    setTimeout(() => overlay.remove(), 400);
-  }, 400);
+  if (!ttsEnabled && window.speechSynthesis) window.speechSynthesis.cancel();
 });
 
-btnBack.addEventListener("click", () => {
-  window.location.href = "index.html"; // troque para a URL principal do seu site
-});
-
-// INICIALIZAÇÃO
-function init() {
-  loadHistory();
-  if (messages.length === 0) {
-    messages.push({ role: "bot", text: "Olá! Sou a assistente virtual. Como posso ajudar você hoje?", time: nowTime() });
-  }
-  renderMessages();
-  userInput.focus();
-
-}
-
-
+btnDark.addEventListener("
