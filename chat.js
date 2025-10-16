@@ -116,8 +116,9 @@ function getIAResponseSync(msg) {
       "Pablo Sousa Ribeiro - pablo.info.09@gmail.com (Desenvolvedor Web)\n" +
       "Marlon Eduardo Da Silva Amaral - marlon.edu2015@gmail.com (Suporte Web)\n" +
       "Kelly Araujo - kellyfaetec.com@gmail.com (Administradora Principal)\n" +
-      "Davi Lucas - 21993891165 (Apresentador Mecânico)\n" +
-      "Joao Pedro Cavalcante - 21983660758 (Apresentador Mecânico)";
+      "Davi Lucas - 21 99389-1165 (Apresentador Mecânico)\n" +
+      "Joao Pedro Cavalcante - 21 98366-0758 (Apresentador Mecânico)\n" +
+      "Gabriel Correa - 21 96526-0942 (Apresentador Mecânico)";
   if (m.includes("endereço") || m.includes("localização"))
     return "Estamos localizados na Escola Técnica Estadual De Santa Cruz, FAETEC — Rio De Janeiro/RJ.";
   if (m.includes("telefone") || m.includes("contato") || m.includes("whatsapp"))
@@ -229,3 +230,4 @@ btnTts.addEventListener("click", () => {
 btnDark.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
+
