@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chat IA - Atendimento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="chat-card" role="application" aria-label="Chat de atendimento">
+    <header class="chat-header">
+      <div class="brand">
+        <div class="logo">IA</div>
+        <div>
+          <h1>Atendimento com IA</h1>
+          <div class="top-info">Respostas rápidas | Bot local</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn small" id="btn-back" title="Voltar para o site principal">⬅️</button>
+        <button class="btn small" id="btn-dark" title="Alternar tema">🌙</button>
+        <button class="btn small" id="btn-clear" title="Limpar histórico">🧹</button>
+        <button class="btn small" id="btn-tts" title="Ativar/Desativar voz">🔊 <span id="tts-state">OFF</span></button>
+      </div>
+    </header>
+
+    <main class="chat-container">
+      <div id="chat-box" class="chat-box" aria-live="polite"></div>
+
+      <div class="input-bar" aria-label="Entrada de mensagem">
+        <textarea id="user-input" placeholder="Digite sua mensagem... (Enter envia • Shift+Enter nova linha)"></textarea>
+        <button id="send-btn" class="send-btn" title="Enviar">⮞</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="chat.js"></script>
+</body>
+</html>
