@@ -226,4 +226,6 @@ btnTts.addEventListener("click", () => {
   if (!ttsEnabled && window.speechSynthesis) window.speechSynthesis.cancel();
 });
 
-btnDark.addEventListener("
+btnDark.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
