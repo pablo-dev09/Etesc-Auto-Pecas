@@ -130,3 +130,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+  // Efeito suave de entrada ao rolar a página
+  const instaSection = document.getElementById("instagram-section");
+
+  window.addEventListener("scroll", () => {
+    const pos = instaSection.getBoundingClientRect().top;
+    if (pos < window.innerHeight - 150) {
+      instaSection.style.opacity = "1";
+      instaSection.style.transform = "translateY(0)";
+    }
+  });
+
+  // Estado inicial (invisível até rolar)
+  instaSection.style.opacity = "0";
+  instaSection.style.transform = "translateY(50px)";
+  instaSection.style.transition = "all 1s ease";
+
