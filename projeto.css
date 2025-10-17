@@ -499,7 +499,7 @@ footer h3{margin:0 0 8px}
 }
 /* ==== SEÇÃO INSTAGRAM ==== */
 #instagram-section {
-  background: linear-gradient(135deg, var(--azul) 20%, var(--azul-escuro) 80%);
+  background: none;
   color: white;
   padding: 100px 20px;
   display: flex;
@@ -589,3 +589,4 @@ footer h3{margin:0 0 8px}
     width: 160px;
   }
 }
+
