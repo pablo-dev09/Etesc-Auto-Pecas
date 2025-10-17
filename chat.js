@@ -228,11 +228,12 @@ btnTts.addEventListener("click", () => {
 });
 
 btnDark.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
+  document.body.classList.toggle("dark");
 });
 btnBack.addEventListener("click", () => {
   window.location.href = "https://pablo-dev09.github.io/Etesc-Auto-Pecas/index.html"; // <-- substitua pelo seu link real
 });
+
 
 
 
