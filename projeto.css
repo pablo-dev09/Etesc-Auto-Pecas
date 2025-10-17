@@ -497,96 +497,112 @@ footer h3{margin:0 0 8px}
   box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
   transform: scale(1.05);
 }
-/* ==== SEÇÃO INSTAGRAM ==== */
+/* ==== SEÇÃO INSTAGRAM (FUNDO PADRÃO DO SITE) ==== */
 #instagram-section {
-  background: none;
-  color: white;
-  padding: 100px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: none; /* remove gradiente */
+  color: var(--azul-escuro);
+  padding: 60px 20px;
   overflow: hidden;
   position: relative;
 }
 
-.insta-container {
+/* Wrapper centralizado */
+.insta-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
+  align-items: center;
+  gap: 36px;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 50px;
-  max-width: 1200px;
-  text-align: center;
-  z-index: 2;
+  text-align: left;
 }
 
+/* Área da logo */
 .insta-logo-area {
-  flex: 1;
-  min-width: 250px;
+  flex: 0 0 240px;
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 800px;
+  perspective: 900px;
 }
 
+/* Logo 3D animada */
 .insta-logo {
   width: 200px;
-  animation: rotateLogo 6s infinite ease-in-out;
-  filter: drop-shadow(0 0 10px var(--azul-claro));
+  max-width: 100%;
+  display: block;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.15));
+  transition: transform 400ms cubic-bezier(.2,.9,.2,1);
+  animation: instaTilt 6s ease-in-out infinite;
 }
 
-@keyframes rotateLogo {
-  0% { transform: rotateY(0deg); }
-  50% { transform: rotateY(180deg); }
-  100% { transform: rotateY(360deg); }
+@keyframes instaTilt {
+  0%   { transform: rotateY(-12deg) rotateX(0deg) translateZ(0); }
+  50%  { transform: rotateY(12deg) rotateX(-6deg) translateZ(6px); }
+  100% { transform: rotateY(-12deg) rotateX(0deg) translateZ(0); }
 }
 
+/* Texto e botão */
 .insta-text-area {
-  flex: 2;
-  min-width: 300px;
+  flex: 1 1 420px;
+  color: var(--grafite);
 }
 
 .insta-text-area h2 {
-  font-size: 2rem;
-  color: var(--azul-claro);
-  margin-bottom: 15px;
+  margin: 0 0 8px 0;
+  color: var(--azul);
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
 }
 
 .insta-text-area p {
-  font-size: 1.1rem;
-  color: #e6e6e6;
-  margin-bottom: 25px;
+  margin: 0 0 18px 0;
+  color: #444;
+  line-height: 1.5;
 }
 
+/* Botão 3D */
 .insta-btn {
+  display: inline-block;
   background: var(--azul-claro);
-  color: var(--azul-escuro);
-  padding: 15px 40px;
+  color: white;
+  padding: 12px 30px;
   border-radius: 30px;
-  font-weight: bold;
-  font-size: 1rem;
+  font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 0 15px var(--azul-claro);
-  transition: all 0.4s ease;
-  transform: perspective(500px) translateZ(0);
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
 }
 
 .insta-btn:hover {
-  transform: perspective(500px) translateZ(40px) scale(1.1);
-  box-shadow: 0 0 30px var(--azul-claro);
+  transform: translateZ(8px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* Animação de entrada */
+#instagram-section[data-visible="false"] {
+  opacity: 0;
+  transform: translateY(30px);
+}
+#instagram-section[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 700ms ease, transform 700ms ease;
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-  .insta-container {
-    flex-direction: column;
-    gap: 30px;
-  }
-  .insta-text-area h2 {
-    font-size: 1.6rem;
-  }
-  .insta-logo {
-    width: 160px;
-  }
+@media (max-width: 900px) {
+  .insta-wrapper { gap: 22px; text-align: center; }
+  .insta-text-area { order: 2; }
+  .insta-logo-area { order: 1; }
 }
 
+@media (max-width: 480px) {
+  #instagram-section { padding: 36px 16px; }
+  .insta-logo { width: 140px; }
+  .insta-text-area h2 { font-size: 1.2rem; }
+  .insta-wrapper { gap: 14px; }
+}
