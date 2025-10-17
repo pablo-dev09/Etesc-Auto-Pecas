@@ -497,121 +497,95 @@ footer h3{margin:0 0 8px}
   box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
   transform: scale(1.05);
 }
-/* ==== SEÇÃO INSTAGRAM CORRIGIDA ==== */
+/* ==== SEÇÃO INSTAGRAM ==== */
 #instagram-section {
-  background: none;
+  background: linear-gradient(135deg, var(--azul) 20%, var(--azul-escuro) 80%);
   color: white;
-  padding: 60px 20px;        /* menos altura para não 'ocupar a tela inteira' */
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   position: relative;
 }
 
-/* Wrapper centralizado - controla largura sem deixar a seção full-screen */
-.insta-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
+.insta-container {
   display: flex;
-  align-items: center;
-  gap: 36px;
   flex-wrap: wrap;
   justify-content: center;
-  text-align: left;
+  align-items: center;
+  gap: 50px;
+  max-width: 1200px;
+  text-align: center;
+  z-index: 2;
 }
 
-/* Área da logo com perspectiva (3D suave) */
 .insta-logo-area {
-  flex: 0 0 240px;
+  flex: 1;
+  min-width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 900px;
+  perspective: 800px;
 }
 
-/* Logo */
 .insta-logo {
-  width: 200px;                /* ajuste conforme seu arquivo */
-  max-width: 100%;
-  display: block;
-  transform-style: preserve-3d;
-  backface-visibility: hidden; /* evita sumir quando girar */
-  filter: drop-shadow(0 8px 28px rgba(0,0,0,0.25));
-  transition: transform 400ms cubic-bezier(.2,.9,.2,1);
-  /* animação sutil de tilt em loop */
-  animation: instaTilt 6s ease-in-out infinite;
+  width: 200px;
+  animation: rotateLogo 6s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px var(--azul-claro));
 }
 
-/* animação de tilt (sem flip total) */
-@keyframes instaTilt {
-  0%   { transform: rotateY(-12deg) rotateX(0deg) translateZ(0); }
-  50%  { transform: rotateY(12deg) rotateX(-6deg) translateZ(6px); }
-  100% { transform: rotateY(-12deg) rotateX(0deg) translateZ(0); }
+@keyframes rotateLogo {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
 }
 
-/* Texto e botão */
 .insta-text-area {
-  flex: 1 1 420px;
-  color: #e9f6ff;
+  flex: 2;
+  min-width: 300px;
 }
 
 .insta-text-area h2 {
-  margin: 0 0 8px 0;
+  font-size: 2rem;
   color: var(--azul-claro);
-  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  margin-bottom: 15px;
 }
 
 .insta-text-area p {
-  margin: 0 0 18px 0;
-  color: rgba(230, 240, 255, 0.95);
-  line-height: 1.5;
+  font-size: 1.1rem;
+  color: #e6e6e6;
+  margin-bottom: 25px;
 }
 
-/* Botão com efeito 3D e foco acessível */
 .insta-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--azul-claro), #7ed8ff);
+  background: var(--azul-claro);
   color: var(--azul-escuro);
-  padding: 12px 30px;
+  padding: 15px 40px;
   border-radius: 30px;
-  font-weight: 700;
+  font-weight: bold;
+  font-size: 1rem;
   text-decoration: none;
-  transform-style: preserve-3d;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.18), 0 0 18px rgba(76,194,255,0.12);
-  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
-  will-change: transform;
-  outline: none;
-  border: none;
+  box-shadow: 0 0 15px var(--azul-claro);
+  transition: all 0.4s ease;
+  transform: perspective(500px) translateZ(0);
 }
 
-.insta-btn:hover,
-.insta-btn:focus {
-  transform: translateZ(12px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.22), 0 0 30px rgba(76,194,255,0.22);
+.insta-btn:hover {
+  transform: perspective(500px) translateZ(40px) scale(1.1);
+  box-shadow: 0 0 30px var(--azul-claro);
 }
 
-/* Seção inicialmente oculta para entrada suave */
-#instagram-section[data-visible="false"] {
-  opacity: 0;
-  transform: translateY(30px);
+/* Responsividade */
+@media (max-width: 768px) {
+  .insta-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .insta-text-area h2 {
+    font-size: 1.6rem;
+  }
+  .insta-logo {
+    width: 160px;
+  }
 }
-#instagram-section[data-visible="true"] {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 700ms ease, transform 700ms ease;
-}
-
-/* RESPONSIVIDADE */
-@media (max-width: 900px) {
-  .insta-wrapper { gap: 22px; text-align: center; }
-  .insta-text-area { order: 2; }
-  .insta-logo-area { order: 1; }
-}
-
-@media (max-width: 480px) {
-  #instagram-section { padding: 36px 16px; }
-  .insta-logo { width: 140px; }
-  .insta-text-area h2 { font-size: 1.2rem; }
-  .insta-wrapper { gap: 14px; }
-}
-
-
-
