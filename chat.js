@@ -122,7 +122,7 @@ function getIAResponseSync(msg) {
   if (m.includes("endereço") || m.includes("localização"))
     return "Estamos localizados na Escola Técnica Estadual De Santa Cruz, FAETEC — Rio De Janeiro/RJ.";
   if (m.includes("telefone") || m.includes("contato") || m.includes("whatsapp"))
-    return "Você pode nos ligar no (11) 4002-8922 ou enviar WhatsApp para (11) 9 9999-9999.";
+    return "Você pode nos ligar no (11) 4002-8922 ou enviar uma mensagem no e-mail: etescautopeças@gmail.com.";
   if (m.includes("preço") || m.includes("valor") || m.includes("mensalidade"))
     return "Para informar preços, preciso saber qual produto ou plano você tem interesse — pode especificar?";
   if (m.includes("trabalhar") || m.includes("vaga"))
@@ -233,6 +233,7 @@ btnDark.addEventListener("click", () => {
 btnBack.addEventListener("click", () => {
   window.location.href = "https://pablo-dev09.github.io/Etesc-Auto-Pecas/index.html"; // <-- substitua pelo seu link real
 });
+
 
 
 
