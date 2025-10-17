@@ -145,4 +145,3 @@ document.addEventListener("DOMContentLoaded", () => {
   instaSection.style.opacity = "0";
   instaSection.style.transform = "translateY(50px)";
   instaSection.style.transition = "all 1s ease";
-
