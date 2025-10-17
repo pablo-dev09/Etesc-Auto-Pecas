@@ -566,6 +566,7 @@ footer h3{margin:0 0 8px}
   font-weight: bold;
   font-size: 1rem;
   text-decoration: none;
+  align-itens: center;
   box-shadow: 0 0 15px var(--azul-claro);
   transition: all 0.4s ease;
   transform: perspective(500px) translateZ(0);
@@ -589,3 +590,4 @@ footer h3{margin:0 0 8px}
     width: 160px;
   }
 }
+
